@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circular progress bar</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="circular-progress">
+        <span class="progress-value">0%</span>
+      </div>
+
+      <span class="text">HTML & CSS</span>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      let circularProgress = document.querySelector(".circular-progress"),
+          progressValue = document.querySelector(".progress-value");
+
+      let progressStartValue = 0,
+          progressEndValue = 90,
+          speed = 100;
+
+      let progress = setInterval(() => {
+        progressStartValue++;
+
+        //to increase inner text 
+        progressValue.textContent = `${progressStartValue}%`;
+        //for progress bar runnnig
+        circularProgress.style.background = `conic-gradient(#7d2ae8 ${progressStartValue * 3.6}deg, #ededed 0deg)`;
+
+        //to set where to stop progress bar
+        if (progressStartValue == progressEndValue) {
+          clearInterval(progress);
+        }
+      }, speed);
+    </script>
+  </body>
+</html>
